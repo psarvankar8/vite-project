@@ -1,8 +1,13 @@
 // src/pages/Home.tsx
-import React, { useState } from "react";
+import React from "react";
 import FoodList from "../components/FoodList";
-import Cart from "../components/Cart";
+import Navbar from "../components/Navbar";
 import { FoodItem } from "../types/FoodItem";
+
+type Props = {
+  cartItems: FoodItem[];
+  addToCart: (item: FoodItem) => void;
+};
 
 const foodData: FoodItem[] = [
   { id: 1, name: "Burger", price: 5.99 },
@@ -10,21 +15,14 @@ const foodData: FoodItem[] = [
   { id: 3, name: "Sushi", price: 12.99 },
 ];
 
-const Home: React.FC = () => {
-  const [cartItems, setCartItems] = useState<FoodItem[]>([]);
-
-  const addToCart = (item: FoodItem) => {
-    setCartItems([...cartItems, item]);
-  };
-
-  const removeFromCart = (id: number) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
-
+const Home: React.FC<Props> = ({ cartItems, addToCart }) => {
   return (
-    <div>
-      <FoodList foodItems={foodData} addToCart={addToCart} />
-      <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+    <div style={{width: "1024px"}}>
+      <Navbar cartCount={cartItems.length} />
+      <div className="container">
+        <h2>Available Food</h2>
+        <FoodList foodItems={foodData} addToCart={addToCart} />
+      </div>
     </div>
   );
 };

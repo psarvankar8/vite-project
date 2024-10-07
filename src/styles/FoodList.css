@@ -1,0 +1,51 @@
+/* src/styles/FoodList.css */
+.food-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  flex-grow: 1; /* Let the food list expand and take up the available space */
+}
+
+.food-item {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: calc(33.333% - 20px); /* 3 items per row */
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.food-item h3 {
+  font-size: 20px;
+}
+
+.food-item p {
+  font-size: 18px;
+}
+
+.food-item button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.food-item button:hover {
+  background-color: #45a049;
+}
+
+@media screen and (max-width: 768px) {
+  .food-item {
+    width: calc(50% - 10px); /* 2 items per row on smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .food-item {
+    width: 100%; /* 1 item per row on very small screens */
+  }
+}
