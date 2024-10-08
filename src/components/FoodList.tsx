@@ -8,6 +8,8 @@ type Props = {
   addToCart: (item: FoodItem) => void;
 };
 
+// comment //
+
 const FoodList: React.FC<Props> = ({ foodItems, addToCart }) => {
   return (
     <div>
