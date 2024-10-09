@@ -1,16 +1,12 @@
-// src/components/Cart.tsx
 import React from "react";
-import { FoodItem } from "../types/FoodItem";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart, selectCartItems, selectTotalPrice } from "../redux/cartSlice";
 import "../styles/Cart.css";
 
-type Props = {
-  cartItems: FoodItem[];
-  removeFromCart: (id: number) => void;
-};
-
-const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
-
+const Cart: React.FC = () => {
+  const cartItems = useSelector(selectCartItems);
+  const totalPrice = useSelector(selectTotalPrice);
+  const dispatch = useDispatch();
   return (
     <div className="cart">
       <h2>Your Cart</h2>
@@ -21,7 +17,7 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
           {cartItems.map((item) => (
             <li key={item.id}>
               {item.name} - ${item.price.toFixed(2)}
-              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+              <button onClick={() => dispatch(removeFromCart(item.id))}>Remove</button>
             </li>
           ))}
         </ul>

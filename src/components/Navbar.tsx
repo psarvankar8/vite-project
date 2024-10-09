@@ -1,13 +1,13 @@
 // src/components/Navbar.tsx
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../redux/cartSlice";
 import "../styles/Navbar.css";
 
-type Props = {
-  cartCount: number;
-};
-
-const Navbar: React.FC<Props> = ({ cartCount }) => {
+const Navbar: React.FC = () => {
+  const cartItems = useSelector(selectCartItems);
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
   return (
     <nav className="navbar">
       <Link to="/" style={{ textDecoration: 'none' }}>

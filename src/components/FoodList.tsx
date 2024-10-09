@@ -1,16 +1,15 @@
-// src/components/FoodList.tsx
 import React from "react";
-import { FoodItem } from "../types/FoodItem";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFoodItems } from "../redux/foodslice";
+import { addToCart } from "../redux/cartSlice";
 import "../styles/FoodList.css";
 
-type Props = {
-  foodItems: FoodItem[];
-  addToCart: (item: FoodItem) => void;
-};
-
-// comment //
-
-const FoodList: React.FC<Props> = ({ foodItems, addToCart }) => {
+const FoodList: React.FC = () => {
+  const foodItems = useSelector(selectFoodItems);
+  const dispatch = useDispatch();
+  const handleAddToCart = (item: { id: number; name: string; price: number }) => {
+    dispatch(addToCart({ ...item, quantity: 1 }));
+  };
   return (
     <div>
       <h2>Available Food</h2>
@@ -19,7 +18,7 @@ const FoodList: React.FC<Props> = ({ foodItems, addToCart }) => {
           <div key={item.id} className="food-item">
             <h3>{item.name}</h3>
             <p>${item.price.toFixed(2)}</p>
-            <button onClick={() => addToCart(item)}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(item)}>Add to Cart</button>
           </div>
         ))}
       </div>
