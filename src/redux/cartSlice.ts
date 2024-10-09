@@ -1,6 +1,4 @@
-// src/features/cartSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import { FoodItem } from '../types/FoodItem';
 
 interface CartItem {
   id: number;
