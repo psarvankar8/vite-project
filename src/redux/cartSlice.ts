@@ -1,9 +1,10 @@
+// src/redux/cartSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface CartItem {
+export interface CartItem {
   id: number;
   name: string;
-  price: number;
+  image: string; // Add image property
   quantity: number;
 }
 
@@ -34,8 +35,4 @@ const cartSlice = createSlice({
 });
 
 export const { addToCart, removeFromCart } = cartSlice.actions;
-export const selectCartItems = (state: { cart: CartState }) => state.cart.items;
-export const selectTotalPrice = (state: { cart: CartState }) =>
-  state.cart.items.reduce((total, item) => total + item.price , 0);
-
 export default cartSlice.reducer;
