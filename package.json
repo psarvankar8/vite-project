@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:dev": "vite build --mode development",  
+    "build:prod": "vite build --mode production",   
+    "serve:prod": "vite preview --mode production" 
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -15,6 +18,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@types/node": "^22.7.5",
+    "@types/path-browserify": "^1.0.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -22,8 +27,11 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "path-browserify": "^1.0.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "url": "^0.11.4",
+    "vite": "^4.5.5",
+    "vite-plugin-svgr": "^3.3.0"
   }
 }
