@@ -1,0 +1,27 @@
+.cart-page {
+    padding: 20px;
+    
+  }
+  
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .cart-item-image {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px;
+    margin-right: 20px;
+  }
+  
+  .cart-item-details {
+    display: flex;
+    flex-direction: column;
+  }
+  

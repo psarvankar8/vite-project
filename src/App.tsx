@@ -1,34 +1,24 @@
 // src/App.tsx
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import CartPage from "./pages/CartPage";
-import { FoodItem } from "./types/FoodItem";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import Navbar from './components/Navbar';
+import ProductPage from './components/ProductPage';
+import CartPage from './components/CartPage';
+import store from './redux/store';
+import './App.css';
 
 const App: React.FC = () => {
-  const [cartItems, setCartItems] = useState<FoodItem[]>([]);
-
-  const addToCart = (item: FoodItem) => {
-    setCartItems([...cartItems, item]);
-  };
-
-  const removeFromCart = (id: number) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
-
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={<Home cartItems={cartItems} addToCart={addToCart} />}
-        />
-        <Route
-          path="/cart"
-          element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} />}
-        />
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ProductPage />} />
+          <Route path="/cart" element={<CartPage />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
 };
 
