@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "cross-env CUSTOM_ENV=development vite", 
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:dev": "vite build --mode development",
-    "build:prod": "vite build --mode production",
-    "serve:dev": "npm run build:dev && vite preview --mode development",
-    "serve:prod": "npm run build:prod && vite preview --mode production"
+    "build:dev": "cross-env CUSTOM_ENV=development vite build --mode development", 
+    "build:prod": "cross-env CUSTOM_ENV=production vite build --mode production",  
+    "serve:dev": "npm run build:dev && cross-env CUSTOM_ENV=development vite preview --mode development", 
+    "serve:prod": "npm run build:prod && cross-env CUSTOM_ENV=production vite preview --mode production" 
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -25,6 +25,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "cross-env": "^7.0.3",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",

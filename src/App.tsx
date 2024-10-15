@@ -14,6 +14,7 @@ function App() {
       .then((data) => setApiData(data))
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
+  console.log(import.meta.env.VITE_API_URL); // Access variables prefixed with VITE_
 
   return (
     <>
