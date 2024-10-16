@@ -8,8 +8,8 @@ import '../style/productPage.css';
 
 const ProductPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const products = useSelector((state: RootState) => state.products.items);
-  const loading = useSelector((state: RootState) => state.products.loading);
+  const products = useSelector((state: RootState) => state.product.items);
+  const loading = useSelector((state: RootState) => state.product.loading);
 
   useEffect(() => {
     dispatch(fetchProducts());
