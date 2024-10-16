@@ -1,39 +1,32 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-import svgr from 'vite-plugin-svgr'; // Import SVGR
-import path from 'path-browserify'; // Include path-browserify
+import svgr from 'vite-plugin-svgr';
 
-// Use Vite's built-in file resolution for input files
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  // Load the environment variables based on the mode (e.g., development, production)
+  const env = loadEnv(mode, process.cwd());
+
   return {
     plugins: [
       react(),
       svgr(),
     ],
+    define: {
+      // Expose the environment variables to your application
+      'process.env.VITE_API_URL': JSON.stringify(env.VITE_API_URL),
+    },
     build: {
       outDir: 'dist',
-      sourcemap: true,  // Enables source maps for easier debugging
-      rollupOptions: {
-        input: {
-          main: 'index.html', // The main entry point for the application
-        },
-      },
+      sourcemap: true,
     },
-    base: './',
     server: {
-      open: true, // Automatically opens the app in the browser when the dev server starts
+      open: true,  // Opens the app in the browser automatically
     },
     resolve: {
       alias: {
-        path: 'path-browserify',  // Alias for path-browserify module
+        path: 'path-browserify',  // Example alias for browser path
       },
     },
-    define: {
-      // Define process.env variables here
-      'process.env': {
-        CUSTOM_ENV: JSON.stringify(process.env.CUSTOM_ENV) // Custom environment variable if set
-      }
-    },
-   
+    base: './',  // Ensures correct paths in production
   };
 });
