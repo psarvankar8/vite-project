@@ -11,6 +11,10 @@ const ProductPage: React.FC = () => {
   const products = useSelector((state: RootState) => state.product.items);
   const loading = useSelector((state: RootState) => state.product.loading);
 
+  const handleAddToCart = (item: { id: number; price: number ;image: string; totalPrice:number}) => {
+    dispatch(addToCart({ ...item, quantity: 1 }));
+  };
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -23,9 +27,9 @@ const ProductPage: React.FC = () => {
         {products.map((product: any) => (
           <div className="product-card" key={product.id}>
             <img src={product.image} alt={product.name} className="product-image" />
-            <h3>{product.name}</h3>
+            {/* <h3>{product.name}</h3> */}
             <p>Price: ${product.price}</p>
-            <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>
