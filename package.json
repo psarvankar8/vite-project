@@ -16,7 +16,7 @@
     "serve:staging": "npm run build:staging && cross-env NODE_ENV=production vite preview --mode staging"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.2.8",
+    "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -41,10 +41,17 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
+<<<<<<< HEAD
     "path-browserify": "^1.0.1",
+=======
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3",
+>>>>>>> 19ef8613ed01f16138d39edf10403d6c4a96309e
     "redux-mock-store": "^1.5.4",
-    "typescript": "^5.5.3",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3",
     "typescript-eslint": "^8.0.1",
     "url": "^0.11.4",
     "vite": "^4.5.5",

@@ -13,8 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "types": ["jest", "node"], // Add jest here
-    "allowImportingTsExtensions": true
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

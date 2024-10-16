@@ -7,12 +7,13 @@ import productReducer from './productSlice';
 const store = configureStore({
   reducer: {
     cart: cartReducer,
-    products: productReducer,
-  },
+    product: productReducer
+  }
 });
 
-// Define RootState type
+// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch; // Define and export AppDispatch
 
 // Define AppDispatch type
 export type AppDispatch = typeof store.dispatch;
