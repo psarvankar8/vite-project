@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
     <nav aria-label="Main navigation">
     <ul>
       <li>
-        <Link to="/">Products</Link>
+      <Link to="/">Products {`${import.meta.env.VITE_APP_MODE}`}</Link>
       </li>
       <li>
         <Link to="/cart" className="cart-icon" aria-label={`Cart with ${cartCount} items`}>

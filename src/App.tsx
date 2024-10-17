@@ -11,6 +11,7 @@ import './App.css';
 const App: React.FC = () => {
   return (
     <Provider store={store}>
+      {/* <ProductPage /> */}
       <Router>
         <Navbar />
         <Routes>
