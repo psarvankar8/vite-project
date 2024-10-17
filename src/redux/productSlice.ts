@@ -2,10 +2,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// with custom_env;
+// export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
+//   const response = await axios.get(`${process.env.API_URL}/products`);
+//   return response.data;
+// });
+
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const response = await axios.get('https://fakestoreapi.com/products');
-  return response.data;
+  // without custom_env
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
+    return response.data;
 });
+
+console.log("hi",`${import.meta.env.VITE_API_URL}`)
 
 const productSlice = createSlice({
   name: 'products',

@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
   return (
     <nav>
       <ul>
-        <li><Link to="/">Products</Link></li>
+        <li><Link to="/">Products {`${import.meta.env.VITE_APP_MODE}`}</Link></li>
         <li>
           <Link to="/cart" className="cart-icon">
             {/* SVG Cart Icon */}
