@@ -1,7 +1,7 @@
 // src/components/CartPage.tsx
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, CartItem } from '../redux/cartSlice';
+import { removeFromCart, CartItem, addToCart } from '../redux/cartSlice';
 import '../style/CartPage.css'; // Ensure you have appropriate styles
 
 const CartPage: React.FC = () => {
@@ -15,6 +15,7 @@ const CartPage: React.FC = () => {
     setTimeout(() => setLiveMsg(null), 3000);
   };
 
+ 
   return (
     <div className="cart-page" aria-labelledby="cart-heading">
       <h1 id="cart-heading">Your Cart</h1>

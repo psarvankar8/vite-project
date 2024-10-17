@@ -16,9 +16,9 @@ const ProductPage: React.FC = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
   
-  const handleAddToCart = (product: any) => {
-    dispatch(addToCart(product));
-    setLiveMsg(`${product.title} has been added to your cart.`); 
+  const handleAddToCart = (item: { id: number; price: number ;image: string; totalPrice:number; title: string}) => {
+    dispatch(addToCart({ ...item, quantity: 1 }));
+    setLiveMsg(`${item.title} has been added to your cart.`); 
     setTimeout(() => setLiveMsg(null), 3000); 
   };
 

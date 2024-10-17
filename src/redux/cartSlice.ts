@@ -3,9 +3,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface CartItem {
   id: number;
-  name: string;
   image: string; // Add image property
+  price: number;
   quantity: number;
+  totalPrice:number;
 }
 
 interface CartState {
@@ -24,8 +25,13 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(item => item.id === action.payload.id);
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
+        existingItem.totalPrice = existingItem.price * existingItem.quantity;
       } else {
-        state.items.push(action.payload);
+        const newItem = {
+          ...action.payload,
+          totalPrice: action.payload.price * action.payload.quantity, // Calculate total price
+        };
+        state.items.push(newItem); 
       }
     },
     removeFromCart(state, action: PayloadAction<number>) {
