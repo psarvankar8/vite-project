@@ -11,6 +11,10 @@ const ProductPage: React.FC = () => {
   const products = useSelector((state: RootState) => state.product.items);
   const loading = useSelector((state: RootState) => state.product.loading);
 
+  const handleAddToCart = (item: { id: number; price: number ;image: string; totalPrice:number}) => {
+    dispatch(addToCart({ ...item, quantity: 1 }));
+  };
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
