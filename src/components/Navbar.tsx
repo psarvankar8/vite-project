@@ -9,26 +9,23 @@ const Navbar: React.FC = () => {
   const cartCount = useSelector((state: RootState) => state.cart.items.length);
 
   return (
-    <nav>
-      <ul>
-        <li><Link to="/">Products</Link></li>
-        <li>
-          <Link to="/cart" className="cart-icon">
-            {/* SVG Cart Icon */}
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 24 24" 
-              width="24" 
-              height="24" 
-              fill="white"
-            >
-              <path d="M7 4v2h14l-1.6 7H9.5l-.5 2H19l1-2H8l1-2H20l2-9H7z" />
-            </svg>
-            {cartCount > 0 && <span className="cart-count">{cartCount}</span>} {/* Show count if greater than 0 */}
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <nav aria-label="Main navigation">
+    <ul>
+      <li>
+        <Link to="/">Products</Link>
+      </li>
+      <li>
+        <Link to="/cart" className="cart-icon" aria-label={`Cart with ${cartCount} items`}>
+        <span className="cart-text">Cart</span><span role="img" aria-hidden="true">🛒</span>  
+          {cartCount > 0 && (
+            <span className="cart-count" aria-live="polite" aria-atomic="true">
+              {cartCount}
+            </span>
+          )} 
+        </Link>
+      </li>
+    </ul>
+  </nav>
   );
 }
 
