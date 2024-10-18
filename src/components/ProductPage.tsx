@@ -1,21 +1,43 @@
 // src/components/ProductPage.tsx
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../redux/productSlice';
-import { addToCart } from '../redux/cartSlice';
-import { RootState, AppDispatch } from '../redux/store';
-import '../style/productPage.css';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import { fetchProducts } from "../redux/productSlice";
+import { addToCart } from "../redux/cartSlice";
+import { RootState, AppDispatch } from "../redux/store";
+import { useTranslation } from "react-i18next";
+import "../style/productPage.css";
+import LanguageSelector from "./dropDown";
+import en from "../../src/locale/en.json";
+import es from "../../src/locale/es.json";
+import fr from "../../src/locale/fr.json";
 
-// Define the Product interface
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  totalPrice?: number;  // Optional field
-}
+i18next
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: { translation: ('./locales/en.json') },
+      es: { translation: ('./locales/es.json') },
+      fr: { translation: ('./locales/fr.json') }
+    },
+    lng: 'en', // default language
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false // React already does escaping
+    }
+  });
+
+  interface Product {
+    id: number;
+    title: string;
+    price: number;
+    image: string;
+    totalPrice?: number;  // Optional field
+  }
 
 const ProductPage: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const products = useSelector((state: RootState) => state.product.items);
   const loading = useSelector((state: RootState) => state.product.loading);
