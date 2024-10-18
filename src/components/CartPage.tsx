@@ -1,12 +1,13 @@
 // src/components/CartPage.tsx
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, CartItem, addToCart } from '../redux/cartSlice';
+import { removeFromCart, CartItem } from '../redux/cartSlice';
 import '../style/CartPage.css'; // Ensure you have appropriate styles
+import { RootState } from '../redux/store';
 
 const CartPage: React.FC = () => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state: any) => state.cart.items); // You can replace 'any' with your RootState type
+  const cartItems = useSelector((state: RootState) => state.cart.items); // You can replace 'any' with your RootState type
   const [liveMsg, setLiveMsg] = useState<string | null>(null);
 
   const handleRemove = (item: CartItem) => {

@@ -6,6 +6,15 @@ import { addToCart } from '../redux/cartSlice';
 import { RootState, AppDispatch } from '../redux/store';
 import '../style/productPage.css';
 
+// Define the Product interface
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  totalPrice?: number;  // Optional field
+}
+
 const ProductPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const products = useSelector((state: RootState) => state.product.items);
@@ -36,7 +45,7 @@ const ProductPage: React.FC = () => {
         {liveMsg}
       </div>
     <div className="product-grid" role="list" aria-label="Product list">
-      {products.map((product: any) => (
+      {products.map((product: Product) => (
         <article className="product-card" key={product.id} role="listitem" aria-labelledby={`product-${product.id}-name`}>
           <figure>
             <img 

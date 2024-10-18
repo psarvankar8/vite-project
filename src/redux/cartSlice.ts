@@ -2,6 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface CartItem {
+  title: string;
   id: number;
   image: string; // Add image property
   price: number;
