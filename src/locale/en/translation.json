@@ -1,0 +1,7 @@
+{
+    "mode": "Production Mode - {{environment}} Environment",
+    "loading": "Loading...",
+    "error": "Error: {{error}}",
+    "title": "Products",
+    "AddtoCart":"Add to Cart"
+  }

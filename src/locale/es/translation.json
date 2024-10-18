@@ -1,0 +1,8 @@
+{
+    "mode": "Modo de producción - {{environment}} Entorno",
+    "loading": "Cargando...",
+    "error": "{{error}}",
+    "title": "Produits",
+    "AddtoCart":"Agregar al Carrito"
+  }
+  

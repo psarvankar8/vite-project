@@ -1,0 +1,8 @@
+{
+    "mode": "Mode de production - {{environment}} Environnement",
+    "loading": "Chargement...",
+    "error": "Erreur: {{error}}",
+    "title": "Article",
+    "AddtoCart":"Ajouter au Panier"
+  }
+  

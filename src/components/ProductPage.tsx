@@ -1,21 +1,25 @@
 // src/components/ProductPage.tsx
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../redux/productSlice';
-import { addToCart } from '../redux/cartSlice';
-import { RootState, AppDispatch } from '../redux/store';
-import '../style/productPage.css';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import { fetchProducts } from "../redux/productSlice";
+import { addToCart } from "../redux/cartSlice";
+import { RootState, AppDispatch } from "../redux/store";
+import { useTranslation } from "react-i18next";
+import "../style/productPage.css";
+import LanguageSelector from "../common/MultiTheme/dropDown";
 
-// Define the Product interface
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  totalPrice?: number;  // Optional field
-}
+  interface Product {
+    id: number;
+    title: string;
+    price: number;
+    image: string;
+    totalPrice?: number;  // Optional field
+  }
 
 const ProductPage: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch: AppDispatch = useDispatch();
   const products = useSelector((state: RootState) => state.product.items);
   const loading = useSelector((state: RootState) => state.product.loading);
@@ -39,9 +43,11 @@ const ProductPage: React.FC = () => {
 
 
   return (
+    
     <section aria-labelledby="product-heading">
-    <h1 id="product-heading">Products</h1>
-    {loading && <p>Loading...</p>}
+      <LanguageSelector/>
+    <h1 id="product-heading">{t('title')}</h1>
+    {loading && <p>{t("Loading...")}</p>}
     {/* ARIA live region for screen reader feedback */}
     <div
         aria-live="assertive"
@@ -68,7 +74,7 @@ const ProductPage: React.FC = () => {
             onClick={() => handleAddToCart(product)}
             aria-label={`Add ${product.title} to Cart`}
           >
-            Add to Cart
+            {t("AddtoCart")}
           </button>
         </article>
       ))}
