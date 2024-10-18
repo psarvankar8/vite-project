@@ -25,11 +25,17 @@ const ProductPage: React.FC = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
   
-  const handleAddToCart = (item: { id: number; price: number ;image: string; totalPrice:number; title: string}) => {
-    dispatch(addToCart({ ...item, quantity: 1 }));
+  const handleAddToCart = (item: Product) => {
+    const productWithTotalPrice = {
+      ...item,
+      totalPrice: item.totalPrice ?? item.price * 1, // Default to price * 1 if totalPrice is undefined
+      quantity: 1,
+    };
+    dispatch(addToCart(productWithTotalPrice));
     setLiveMsg(`${item.title} has been added to your cart.`); 
     setTimeout(() => setLiveMsg(null), 3000); 
   };
+  
 
 
   return (
