@@ -1,10 +1,19 @@
 // src/components/ProductPage.tsx
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../redux/productSlice';
 import { addToCart } from '../redux/cartSlice';
 import { RootState, AppDispatch } from '../redux/store';
 import '../style/productPage.css';
+=======
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/productSlice";
+import { addToCart } from "../redux/cartSlice";
+import { RootState, AppDispatch } from "../redux/store";
+import "../style/productPage.css";
+>>>>>>> 36dae1eb1611a0ba6db64aae3a8a802fda174cba
 
 // Define the Product interface
 interface Product {
@@ -33,16 +42,19 @@ const ProductPage: React.FC = () => {
 
 
   return (
-    <section aria-labelledby="product-heading">
-    <h1 id="product-heading">Products</h1>
-    {loading && <p>Loading...</p>}
-    {/* ARIA live region for screen reader feedback */}
-    <div
-        aria-live="assertive"
-        aria-atomic="true"
-        style={{ position: 'absolute', left: '-9999px' }}  
-      >
-        {liveMsg}
+    <div>
+      <h1>Products</h1>
+      {loading && <p>Loading...</p>}
+      <div data-testid="product-grid" className="product-grid">
+        {products && products.length > 0
+          ? products.map((product: any, index: any) => (
+              <div key={product.id} className="product-item">
+                <img src={product.imageUrl} alt={product.name} />
+                <h2>{product.title}</h2>
+                <p>${product.price}</p>
+              </div>
+            ))
+          : !loading && <p>No products available.</p>}
       </div>
     <div className="product-grid" role="list" aria-label="Product list">
       {products.map((product: Product) => (
@@ -72,3 +84,4 @@ const ProductPage: React.FC = () => {
 };
 
 export default ProductPage;
+``
