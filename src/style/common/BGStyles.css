@@ -1,0 +1,19 @@
+ .bg-switcher-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+  }
+   
+  .bg-switcher-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+   
+  .bg-switcher-select {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px
+  }
