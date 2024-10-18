@@ -8,25 +8,7 @@ import { addToCart } from "../redux/cartSlice";
 import { RootState, AppDispatch } from "../redux/store";
 import { useTranslation } from "react-i18next";
 import "../style/productPage.css";
-import LanguageSelector from "./dropDown";
-import en from "../../src/locale/en.json";
-import es from "../../src/locale/es.json";
-import fr from "../../src/locale/fr.json";
-
-i18next
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: { translation: ('./locales/en.json') },
-      es: { translation: ('./locales/es.json') },
-      fr: { translation: ('./locales/fr.json') }
-    },
-    lng: 'en', // default language
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false // React already does escaping
-    }
-  });
+import LanguageSelector from "../common/MultiTheme/dropDown";
 
   interface Product {
     id: number;
@@ -61,9 +43,11 @@ const ProductPage: React.FC = () => {
 
 
   return (
+    
     <section aria-labelledby="product-heading">
-    <h1 id="product-heading">Products</h1>
-    {loading && <p>Loading...</p>}
+      <LanguageSelector/>
+    <h1 id="product-heading">{t('Products')}</h1>
+    {loading && <p>{t("Loading...")}</p>}
     {/* ARIA live region for screen reader feedback */}
     <div
         aria-live="assertive"
@@ -90,7 +74,7 @@ const ProductPage: React.FC = () => {
             onClick={() => handleAddToCart(product)}
             aria-label={`Add ${product.title} to Cart`}
           >
-            Add to Cart
+            {t("Add to Cart")}
           </button>
         </article>
       ))}
