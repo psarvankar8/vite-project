@@ -50,7 +50,7 @@ const ProductPage: React.FC = () => {
       >
         {liveMsg}
       </div>
-    <div className="product-grid" role="list" aria-label="Product list">
+    <div data-testid="product-grid"  className="product-grid" role="list" aria-label="Product list">
       {products.map((product: Product) => (
         <article className="product-card" key={product.id} role="listitem" aria-labelledby={`product-${product.id}-name`}>
           <figure>
