@@ -1,0 +1,8 @@
+{
+    "mode": "Production Mode - {{environment}} Environment",
+    "loading": "Loading...",
+    "error": "Error: {{error}}",
+    "productList": "Product list",
+    "title": "Item",
+    "category": "Category"
+  }

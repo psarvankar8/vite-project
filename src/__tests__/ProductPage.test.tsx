@@ -1,9 +1,6 @@
 // ProductPage.test.tsx
-import React from 'react';
 import { render, RenderResult, screen,  waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
 import ProductPage from '../components/ProductPage'; // Adjust the import path as necessary
 import store from '../redux/store';
 import fetchMock from 'jest-fetch-mock';
