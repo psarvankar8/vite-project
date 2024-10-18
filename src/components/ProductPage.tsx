@@ -46,7 +46,7 @@ const ProductPage: React.FC = () => {
     
     <section aria-labelledby="product-heading">
       <LanguageSelector/>
-    <h1 id="product-heading">{t('Products')}</h1>
+    <h1 id="product-heading">{t('title')}</h1>
     {loading && <p>{t("Loading...")}</p>}
     {/* ARIA live region for screen reader feedback */}
     <div
@@ -74,7 +74,7 @@ const ProductPage: React.FC = () => {
             onClick={() => handleAddToCart(product)}
             aria-label={`Add ${product.title} to Cart`}
           >
-            {t("Add to Cart")}
+            {t("AddtoCart")}
           </button>
         </article>
       ))}
